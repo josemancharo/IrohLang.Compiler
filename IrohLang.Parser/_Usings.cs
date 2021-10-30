@@ -1,0 +1,12 @@
+﻿global using System;
+global using System.Collections.Generic;
+global using System.Linq;
+global using System.Text;
+global using System.Threading.Tasks;
+global using Superpower.Parsers;
+global using Superpower.Display;
+global using Superpower;
+global using Superpower.Tokenizers;
+global using Superpower.Model;
+global using IrohLang.Parser.Grammar;
+global using IrohLang.AST;
