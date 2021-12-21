@@ -1,26 +1,20 @@
-using IrohLang.AST;
-using IrohLang.Parser;
-using IrohLang.Parser.AST;
-using IrohLang.Parser.Grammar;
-using NUnit.Framework;
-using Superpower.Parsers;
-using System.Linq;
 
 namespace IrohLang.Parser.Tests
 {
     public class HelloWorldTests
     {
         private const string HELLO_WORLD_SIMPLE = @"
-fn main():
+fn main(){
    println('Hello World!');
-end
+}
 ";
         private static string HELLO_WORLD_COMPLEX = @"
 mod main;
 
 use os;
 
-fn main(string[] args):
+fn main(string[] args)
+{
     ! Comments start with an exclamation point
     
     val message = 
@@ -29,7 +23,7 @@ fn main(string[] args):
         else 'Hello World!';
 
     message |> stdout::write;
-end
+}
 ";
 
 
@@ -53,7 +47,7 @@ end
         public void Test_Parse_HELLO_WORLD_SIMPLE()
         {
             var tokens = IrohTokenizer.Tokenizer.Tokenize(HELLO_WORLD_SIMPLE);
-            var AST = IrohParser.TopLevelAST(tokens);
+            var AST = IrohParser.File(tokens);
 
             Assert.That(AST.HasValue, () => AST.ToString());
             Assert.That(AST.Value.TopLevelElements.Count() == 1, () => "There exists more or less than one top level element(s)");

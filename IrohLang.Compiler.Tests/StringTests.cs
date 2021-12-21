@@ -7,6 +7,7 @@ using NUnit.Framework;
 using IrohLang.Parser;
 using IrohLang.Parser.Grammar;
 using IrohLang.AST;
+using IrohLang.AST.Primitives;
 
 namespace IrohLang.Parser.Tests
 {

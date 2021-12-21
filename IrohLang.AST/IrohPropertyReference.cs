@@ -6,13 +6,18 @@ using System.Threading.Tasks;
 
 namespace IrohLang.AST
 {
-    public record IrohPropertyReference : IIrohExpression
+    public record IrohPropertyReference(string[] FullyQualifiedIdentifier) : IIrohExpression
     {
-        public IrohPropertyReference(string name)
-        {
-            Name = name;
-        }
-        public string[]? FullyQualifiedIdentifier { get; set; }
-        public string Name { get; set; }
+        public string TypeName => nameof(IrohPropertyReference);
+        public ParserPosition? Position { get; init; }
+        public PropertyReferenceFlag PropertyReferenceFlag { get; init; } = PropertyReferenceFlag.None;
+        public string Name => FullyQualifiedIdentifier[^1];
+    }
+
+    public enum PropertyReferenceFlag
+    {
+        Ref,
+        Deref,
+        None,
     }
 }

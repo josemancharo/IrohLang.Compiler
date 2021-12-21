@@ -18,7 +18,7 @@ namespace IrohLang.Parser.Grammar
         RParen,
         [Token(Category = "literal", Example = "0")]
         Integer,
-        [Token(Category = "literal", Example = "\"...\"")]
+        [Token(Category = "literal", Example = "''")]
         String,
         [Token(Category = "literal", Example = "! Comment goes here")]
         Comment,
@@ -88,6 +88,8 @@ namespace IrohLang.Parser.Grammar
         Public,
         Private,
         Internal,
-        Protected
+        Protected,
+        Class,
+        Extern
     }
 }

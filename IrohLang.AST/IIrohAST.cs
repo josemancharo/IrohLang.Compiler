@@ -1,19 +1,21 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿
 
 namespace IrohLang.AST
 {
     public interface IIrohAST
     {
-
+        public string TypeName { get; }
+        public ParserPosition? Position { get; init; }
     }
 
-    public interface IIrohTopLevelElement : IIrohAST
+    public interface IIrohFunction : IIrohAST
     {
-        IEnumerable<IIrohAST>? Body { get; set; }
+        IEnumerable<IIrohExpression>? Body { get; init; }
+    }
+
+    public interface IIrohTypeDefinition : IIrohAST
+    {
+
     }
 
     public interface IIrohExpression : IIrohAST

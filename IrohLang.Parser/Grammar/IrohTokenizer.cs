@@ -25,6 +25,7 @@ namespace IrohLang.Parser.Grammar
             .Match(Span.EqualTo("private"), IrohToken.Private, true)
             .Match(Span.EqualTo("internal"), IrohToken.Internal, true)
             .Match(Span.EqualTo("protected"), IrohToken.Protected, true)
+            .Match(Span.EqualTo("extern"), IrohToken.Extern, true)
 
             .Match(Span.EqualTo("fn"), IrohToken.Fn, true) // v0.0.1
             .Match(Span.EqualTo("end"), IrohToken.End, true) // v0.0.1
@@ -32,6 +33,7 @@ namespace IrohLang.Parser.Grammar
             .Match(Span.EqualTo("mut"), IrohToken.Mutable, true)
             .Match(Span.EqualTo("const"), IrohToken.Const, true)
             .Match(Span.EqualTo("struct"), IrohToken.Struct, true)
+            .Match(Span.EqualTo("class"), IrohToken.Class, true)
             .Match(Span.EqualTo("enum"), IrohToken.Enum, true)
 
             .Match(Span.EqualTo("if"), IrohToken.If, true)

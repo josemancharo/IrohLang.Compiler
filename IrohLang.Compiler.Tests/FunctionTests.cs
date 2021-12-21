@@ -8,6 +8,7 @@ using IrohLang.Parser;
 using IrohLang.Parser.Grammar;
 using IrohLang.Parser.AST;
 using IrohLang.AST;
+using IrohLang.AST.Primitives;
 
 namespace IrohLang.Parser.Tests
 {
@@ -17,8 +18,9 @@ namespace IrohLang.Parser.Tests
         public void Test_TrivialFunctionParse()
         {
             const string TRIVIAL_FUNCTION = @"
-fn function1(str arg0):
-end
+fn function1(str arg0)
+{
+}
 ";
             var tokens = IrohTokenizer.Tokenizer.Tokenize(TRIVIAL_FUNCTION);
             var AST = IrohParser.Function(tokens);
@@ -33,15 +35,24 @@ end
         public void Test_TrivialFunctionWithBodyParse()
         {
             const string TRIVIAL_FUNCTION = @"
-fn function1(str arg0):
+fn function1(str arg0)
+{
     println(arg0); 
-end
+}
 ";
             var tokens = IrohTokenizer.Tokenizer.Tokenize(TRIVIAL_FUNCTION);
             var AST = IrohParser.Function(tokens);
             Assert.That(AST.HasValue, () => AST.ToString());
         }
 
+        [Test]
+        public void Test_TrivialFunctionWithReturnType()
+        {
+            const string FUNCTION = "fn<str> hello(){}";
+            var parsed = IrohParser.Function(IrohTokenizer.Tokenizer.Tokenize(FUNCTION));
+            Assert.That(parsed.HasValue, () => parsed.ToString());
+            Assert.That(parsed.Value.ReturnType is { Name: "str" });
+        }
 
         [Test]
         public void Test_FunctionInvocation()

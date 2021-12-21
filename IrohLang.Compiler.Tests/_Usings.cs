@@ -1,0 +1,9 @@
+﻿global using IrohLang.AST;
+global using IrohLang.AST.Primitives;
+global using IrohLang.Parser;
+global using IrohLang.Parser.AST;
+global using IrohLang.Parser.Grammar;
+global using NUnit.Framework;
+global using Superpower.Parsers;
+global using System.Linq;
+global using IrohLang.AST.Organization;

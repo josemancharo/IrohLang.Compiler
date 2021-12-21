@@ -1,18 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace IrohLang.AST
+﻿namespace IrohLang.AST
 {
-    public record IrohExpression : IIrohExpression
+    public record IrohExpression(IEnumerable<IIrohExpression> SubExpressions) : IIrohExpression
     {
-        public IEnumerable<IIrohExpression> SubExpressions { get; set; }
+        public string TypeName => nameof(IrohExpression);
+        public ParserPosition? Position { get; init; }
 
-        public IrohExpression(IEnumerable<IIrohExpression> subExpressions)
-        {
-            SubExpressions = subExpressions;
-        }
     }
 }

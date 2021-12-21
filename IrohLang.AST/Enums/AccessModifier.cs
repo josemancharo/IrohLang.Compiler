@@ -10,6 +10,8 @@ namespace IrohLang.Parser.AST.Enums
     {
         Public,
         Private,
-        Internal
+        Internal,
+        Protected,
+        ProtectedInternal
     }
 }

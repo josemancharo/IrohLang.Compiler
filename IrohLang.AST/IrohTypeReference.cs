@@ -6,12 +6,11 @@ using System.Threading.Tasks;
 
 namespace IrohLang.AST
 {
-    public record IrohTypeReference : IIrohAST
+    public record IrohTypeReference(string[] FullyQualifiedName) : IIrohAST
     {
-        public IrohTypeReference(string name)
-        {
-            Name = name;
-        }
-        public string Name { get; set; }
+        public string TypeName => nameof(IrohTypeReference);
+        public ParserPosition? Position { get; init; }
+
+        public string Name => FullyQualifiedName.Last();
     }
 }

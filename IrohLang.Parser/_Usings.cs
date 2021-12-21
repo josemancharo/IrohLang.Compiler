@@ -9,4 +9,5 @@ global using Superpower;
 global using Superpower.Tokenizers;
 global using Superpower.Model;
 global using IrohLang.Parser.Grammar;
+global using IrohLang.Parser.Util;
 global using IrohLang.AST;
